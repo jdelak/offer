@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">jdelak_offer_offer_listing.jdelak_offer_offer_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>jdelak_offer_offer_columns</spinner>
+		<deps>
+			<dep>jdelak_offer_offer_listing.jdelak_offer_offer_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new Offer</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource component="Magento_Ui/js/grid/provider" name="jdelak_offer_offer_listing_data_source">
+		<settings>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Jdelak_Offer::Offer</aclResource>
+		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="jdelak_offer_offer_listing_data_source">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>offer_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="jdelak_offer_offer_columns">
+		<settings>
+			<editorConfig>
+				<param name="selectProvider" xsi:type="string">jdelak_offer_offer_listing.jdelak_offer_offer_listing.jdelak_offer_offer_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">offer_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" path="jdelak_offer/Offer/inlineEdit" xsi:type="url"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">jdelak_offer_offer_listing.jdelak_offer_offer_listing.jdelak_offer_offer_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>offer_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="offer_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+				<editor>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="label">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">label</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		 <column name="image" component="Magento_Ui/js/grid/columns/thumbnail" class="Jdelak\Offer\Ui\Component\Listing\Column\Thumbnail">
+			<settings>
+				<hasPreview>1</hasPreview>
+				<!-- <addField>true</addField> -->
+				<label translate="true">Image</label>
+				<sortable>false</sortable>
+			</settings>
+		</column>
+		<column name="redirect_link">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">redirect_link</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="starting_date" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <dateFormat>yyyy-MM-dd hh:mm:ss</dateFormat>
+                <label translate="true">Starting Date</label>
+                <timezone>false</timezone>
+            </settings>
+        </column>
+		<column name="ending_date" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <dateFormat>yyyy-MM-dd hh:mm:ss</dateFormat>
+                <label translate="true">Ending Date</label>
+                <timezone>false</timezone>
+            </settings>
+        </column>
+		<actionsColumn class="Jdelak\Offer\Ui\Component\Listing\Column\OfferActions" name="actions" sortOrder="9999">
+			<settings>
+				<indexField>offer_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

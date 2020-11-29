@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Jdelak::top_level" module="Jdelak_Offer" resource="Magento_Backend::content" sortOrder="10" title="Offres"/>
+		<add action="jdelak_offer/offer/index" id="Jdelak_Offer::jdelak_offer_offer" module="Jdelak_Offer" parent="Jdelak::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Liste des Offres"/>
+	</menu>
+</config>

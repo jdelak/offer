@@ -1,0 +1,14 @@
+.banner-offer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.banner-block{
+    width:33.333%;
+}
+
+.banner-image img{
+    max-width:100%;
+}

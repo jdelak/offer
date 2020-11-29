@@ -1,0 +1,17 @@
+<?php /** @var Jdelak\Offer\Block\Banner $block */ ?>
+<div class="banner-container">
+<?php foreach($block->getBanners() as $offer): ?>
+<div class="banner-offer">
+    <div class="banner-block banner-image">
+        <img src="<?php echo $block->getMediaPath().$offer['image']; ?>" alt="<?php $offer['label']; ?>"/>
+    </div>
+    <div class="banner-block banner-content">
+        <p><?php echo $offer['label']; ?></p>
+    </div>
+    <div class="banner-block banner-link">
+        <a href="<?php echo $offer['redirect_link']; ?>">En savoir plus</a>
+    </div>
+</div>
+<?php endforeach ?>
+</div>
+<hr>
